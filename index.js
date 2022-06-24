@@ -85,7 +85,14 @@ client.on("messageReactionAdd", async (reaction, user) => {
     } user(s) have given the same reaction to this message!`
   );
 });
-
+client.on("messageReactionAdd", (reaction, author) => {
+  // if (reaction.message.author == bot) {
+  //Here you can check the message itself, the author, a tag on the message or in its content, title ...
+  if (reaction.message.reactions.cache.get("🃏")) {
+    console.log(reaction.message.reactions.cache.get("🃏").count);
+  }
+  // }
+});
 // COMMAND INTERACTION
 client.on("interactionCreate", async (interaction) => {
   if (!interaction.isCommand()) return;
